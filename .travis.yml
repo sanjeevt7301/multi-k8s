@@ -5,18 +5,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t sanjeevthakur/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t sanjeevt7301/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true sanjeevthakur/react-test npm test
+  - docker run -e CI=true sanjeevt7301/react-test npm test
 
   after_success:
-    - docker build -t sanjeevthakur/multi-client ./client
-    - docker build -t sanjeevthakur/multi-nginx ./nginx
-    - docker build -t sanjeevthakur/multi-server ./server
-    - docker build -t sanjeevthakur/multi-worker ./worker
+    - docker build -t sanjeevt7301/multi-client ./client
+    - docker build -t sanjeevt7301/multi-nginx ./nginx
+    - docker build -t sanjeevt7301/multi-server ./server
+    - docker build -t sanjeevt7301/multi-worker ./worker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push sanjeevthakur/multi-client
-    - docker push sanjeevthakur/multi-nginx
-    - docker push sanjeevthakur/multi-server
-    - docker push sanjeevthakur/multi-worker
+    - docker push sanjeevt7301/multi-client
+    - docker push sanjeevt7301/multi-nginx
+    - docker push sanjeevt7301/multi-server
+    - docker push sanjeevt7301/multi-worker
